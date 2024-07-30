@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
+import 'trading.dart';
 
 void main() {
-  runApp(const TradingGame());
+  runApp(const Trading());
 }
 

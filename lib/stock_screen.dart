@@ -6,10 +6,12 @@ class StockScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        margin: const EdgeInsets.all(40),
+    return MaterialApp(
+      home: SizedBox(
+        width: double.infinity,
+        child: Container(
+          margin: const EdgeInsets.all(40),
+        ),
       ),
     );
   }
