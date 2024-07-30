@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dataModels/create_stocks.dart';
+import 'WidgetModels/button.dart';
 
 class TradingGame extends StatefulWidget {
   const TradingGame({super.key});
@@ -37,6 +38,8 @@ class _TradingGameState extends State<TradingGame> {
                     color: Color.fromARGB(0, 0, 0, 0),
                   ),
                 ),
+                SBButton(text: 'Buy', onTap: () {}),
+                SBButton(text: 'Sell', onTap: () {}),
               ],
               // Buy/Sell buttons
             )
