@@ -3,27 +3,16 @@ import 'dataModels/create_stocks.dart';
 import 'WidgetModels/button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TradingGame extends StatefulWidget {
+class TradingGame extends StatelessWidget {
   const TradingGame(this.startTrading, {super.key});
 
   final void Function() startTrading;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _TradingGameState createState() => _TradingGameState();
-}
-
-class _TradingGameState extends State<TradingGame> {
-  @override
-  void initState() {
-    super.initState();
-    // Initialize game with initial player and market data
-  }
-
-  @override
   Widget build(BuildContext context) {
     const currentStock = 0;
     final stockName = stockList[currentStock].name;
+    var stockValue = stockList[currentStock].price;
 
     return Column(
       children: [
@@ -41,16 +30,19 @@ class _TradingGameState extends State<TradingGame> {
           children: [
             StockButton(
               text: stockName,
-              onTap: () {},
+              onTap: startTrading,
             ),
             const SizedBox(
               width: 20,
             ),
-            SBButton(text: 'Buy', onTap: () {}),
-            const SizedBox(
-              width: 10,
-            ),
-            SBButton(text: 'Sell', onTap: () {}),
+            Text(
+              'Current Price: $stockValue',
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 0, 0, 0),
+                fontSize: 25,
+                fontWeight: FontWeight.w400,
+              ),
+            )
           ],
           // Buy/Sell buttons
         )
