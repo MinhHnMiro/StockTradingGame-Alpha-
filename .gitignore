@@ -41,3 +41,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Rest of the Big Folders
+android
+ios
+linux
+windows
+test
+web
+.idea
+.dart_tool
+.build
