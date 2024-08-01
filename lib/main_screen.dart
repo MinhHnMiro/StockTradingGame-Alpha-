@@ -1,52 +1,56 @@
 import 'package:flutter/material.dart';
-import 'dataModels/create_stocks.dart';
-import 'WidgetModels/button.dart';
+import 'WidgetModels/create_row.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TradingGame extends StatelessWidget {
-  const TradingGame(this.startTrading, {super.key});
+  const TradingGame(this.startTrading,
+      {super.key, required this.playerBalance, required this.stockList});
 
-  final void Function() startTrading;
+  final void Function(int) startTrading;
+  final int playerBalance;
+  final List stockList;
+  // ignore: prefer_typing_uninitialized_variables
 
   @override
   Widget build(BuildContext context) {
-    const currentStock = 0;
-    final stockName = stockList[currentStock].name;
-    var stockValue = stockList[currentStock].price;
-
-    return Column(
-      children: [
-        Text(
-          'Player Balance: 1',
-          style: GoogleFonts.lato(
-            color: const Color.fromARGB(199, 0, 0, 0),
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+    return SizedBox(
+      height: double.infinity,
+      child: Column(
+        children: [
+          Text(
+            'Player Balance: $playerBalance',
+            style: GoogleFonts.lato(
+              color: const Color.fromARGB(199, 0, 0, 0),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        // Stock list
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            StockButton(
-              text: stockName,
-              onTap: startTrading,
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Text(
-              'Current Price: $stockValue',
-              style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-              ),
-            )
-          ],
-          // Buy/Sell buttons
-        )
-      ],
+          CreateRow(
+            stockName: stockList[0].name,
+            startTrading: () {
+              startTrading(0);
+              },
+            stockValue: stockList[0].price,
+            init: 0,
+          ),
+          CreateRow(
+            stockName: stockList[1].name,
+            startTrading: () {
+              startTrading(1);
+              },
+            stockValue: stockList[1].price,
+            init: 0,
+          ),
+          CreateRow(
+            stockName: stockList[2].name,
+            startTrading: () {
+              startTrading(2);
+              },
+            stockValue: stockList[2].price,
+            init: 0,
+          ),
+        ],
+      ),
     );
   }
 }

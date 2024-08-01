@@ -9,11 +9,12 @@ class Player {
 class Stock {
   //final String symbol;
   final String name;
-  double price;
+  int price;
   int quantity;
   final List<int> path;
+  int ownedByPlayer;
 
-  Stock({required this.name, required this.price, required this.quantity, required this.path});
+  Stock({required this.name, required this.price, required this.quantity, required this.path, required this.ownedByPlayer});
 }
 
 class Market {
